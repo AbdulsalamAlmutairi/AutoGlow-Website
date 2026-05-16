@@ -1,0 +1,239 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: Arial, sans-serif;
+  background: #EDEAE4;
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+header {
+  background: #405B88;
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo { font-size: 22px; font-weight: bold; cursor: pointer; letter-spacing: 2px; }
+#headerSub { font-size: 13px; opacity: 0.7; }
+
+/* ── NAVBAR ── */
+nav {
+  background: #2C3E5D;
+  display: flex;
+  gap: 4px;
+  padding: 0 20px;
+}
+
+nav a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 13.5px;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+nav a:hover, nav a.active { color: white; border-bottom-color: #85B3E1; }
+
+/* ── PAGES ── */
+.page { max-width: 920px; margin: 36px auto; padding: 0 16px; flex: 1; }
+.hidden { display: none !important; }
+.page > h2 { text-align: center; color: #405B88; font-size: 22px; margin-bottom: 24px; }
+
+/* ── PACKAGES (horizontal) ── */
+.cards { display: flex; gap: 16px; }
+
+.pkg-card {
+  flex: 1;
+  background: white;
+  border: 2px solid #C5CEDC;
+  border-radius: 14px;
+  padding: 22px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pkg-card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(64,91,136,0.15); }
+.pkg-card h3 { color: #2C3E5D; font-size: 17px; }
+.pkg-card p  { color: #777; font-size: 13px; flex: 1; }
+.pkg-card .price { font-size: 22px; font-weight: bold; color: #405B88; }
+.pkg-card button {
+  background: #405B88; color: white; border: none;
+  border-radius: 50px; padding: 9px; cursor: pointer;
+  font-size: 14px; transition: background 0.2s;
+}
+.pkg-card button:hover { background: #2C3E5D; }
+
+/* ── FORM CARD ── */
+.form-card {
+  background: white;
+  border: 1.5px solid #C5CEDC;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.form-card h2 { color: #2C3E5D; font-size: 20px; margin-bottom: 20px; }
+
+label {
+  display: block; color: #405B88;
+  font-size: 13px; font-weight: bold; margin: 14px 0 5px;
+}
+
+input[type="text"], input[type="tel"],
+input[type="password"], input[type="date"] {
+  width: 100%; padding: 10px 12px;
+  border: 1.5px solid #C5CEDC; border-radius: 8px;
+  font-size: 14px; background: #FAFBFD; transition: border-color 0.2s;
+}
+
+input:focus { outline: none; border-color: #405B88; }
+
+/* ── RADIO ── */
+.radio-group { display: flex; flex-direction: column; gap: 8px; margin-top: 6px; }
+
+.radio-opt {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; border: 1.5px solid #C5CEDC;
+  border-radius: 8px; cursor: pointer; font-size: 14px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.radio-opt:hover { background: #F0F4FA; border-color: #405B88; }
+.radio-opt input { accent-color: #405B88; }
+
+/* ── INFO & SUMMARY ── */
+.info-box {
+  background: #EEF3FA; border: 1px solid #C5CEDC;
+  border-radius: 8px; padding: 12px 16px;
+  display: flex; justify-content: space-between;
+  font-size: 13.5px; flex-wrap: wrap; gap: 6px; margin-bottom: 4px;
+}
+
+.summary {
+  background: #EEF3FA; border: 1px solid #C5CEDC;
+  border-radius: 8px; padding: 14px 16px; margin: 16px 0; font-size: 14px;
+}
+
+.summary-row {
+  display: flex; justify-content: space-between;
+  padding: 5px 0; border-bottom: 1px solid #D8E3F0;
+}
+
+.summary-row:last-child { border-bottom: none; font-weight: bold; color: #405B88; }
+.summary-row span:first-child { color: #777; }
+
+/* ── BUTTONS ── */
+.btn-main {
+  background: #405B88; color: white; border: none;
+  border-radius: 50px; padding: 11px 24px; font-size: 14px;
+  cursor: pointer; transition: background 0.2s; flex: 1;
+}
+.btn-main:hover { background: #2C3E5D; }
+
+.btn-back {
+  background: transparent; color: #405B88;
+  border: 1.5px solid #C5CEDC; border-radius: 50px;
+  padding: 11px 20px; font-size: 14px; cursor: pointer;
+  transition: background 0.2s;
+}
+.btn-back:hover { background: #EEF3FA; }
+
+.btn-row { display: flex; gap: 10px; margin-top: 20px; }
+
+/* ── CARD FORM ── */
+.card-row { display: flex; gap: 12px; }
+.card-field { flex: 1; }
+
+/* ── MISC ── */
+.error-msg {
+  background: #FDECEA; border: 1px solid #f5c6cb;
+  color: #c0392b; padding: 10px 14px;
+  border-radius: 8px; font-size: 13px; margin: 10px 0;
+}
+
+.switch { text-align: center; margin-top: 18px; font-size: 13.5px; color: #777; }
+.switch a { color: #405B88; cursor: pointer; text-decoration: underline; }
+
+.success-icon {
+  width: 56px; height: 56px; background: #2d7a4f;
+  border-radius: 50%; color: white; font-size: 26px;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 14px;
+}
+
+.ref-label { text-align: center; color: #777; font-size: 14px; margin-bottom: 4px; }
+
+/* ── ABOUT & HELP ── */
+.info-card {
+  background: white;
+  border: 1.5px solid #C5CEDC;
+  border-radius: 16px;
+  padding: 36px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.info-card h2 { color: #2C3E5D; font-size: 22px; margin-bottom: 6px; }
+.info-card h3 { color: #405B88; font-size: 15px; margin: 24px 0 8px; }
+.info-card p  { color: #555; font-size: 14px; line-height: 1.7; }
+
+.mission-box {
+  background: #EEF3FA;
+  border-left: 4px solid #405B88;
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin: 20px 0;
+  font-size: 14px;
+  color: #2C3E5D;
+  font-style: italic;
+  line-height: 1.6;
+}
+
+.whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25D366;
+  color: white;
+  text-decoration: none;
+  padding: 13px 28px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background 0.2s;
+}
+.whatsapp-btn:hover { background: #1ebe5a; }
+
+.help-section { margin-bottom: 28px; }
+.help-section h3 { color: #405B88; font-size: 15px; margin-bottom: 8px; }
+.help-section p  { color: #555; font-size: 14px; line-height: 1.7; }
+
+/* ── FOOTER ── */
+footer {
+  background: #2C3E5D; color: rgba(255,255,255,0.6);
+  text-align: center; padding: 16px; font-size: 13px; margin-top: 48px;
+}
+
+@media (max-width: 600px) {
+  .cards { flex-direction: column; }
+  .info-box, .btn-row { flex-direction: column; }
+}
+
+@media print {
+  header, nav, footer, .btn-row { display: none; }
+}

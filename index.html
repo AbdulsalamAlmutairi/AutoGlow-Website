@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AutoGlow</title>
+  <link rel="stylesheet" href="css/autoglow-styles.css">
+</head>
+<body>
+
+  <header>
+    <span class="logo" onclick="showPage('home')">AutoGlow</span>
+    <span id="headerSub">Book your shine in seconds</span>
+  </header>
+
+  <nav>
+    <a id="nav-home"  onclick="showPage('home')"  class="active">Home</a>
+    <a id="nav-about" onclick="showPage('about')">About Us</a>
+    <a id="nav-help"  onclick="showPage('help')">Help</a>
+  </nav>
+
+  <!-- HOME -->
+  <div id="page-home" class="page">
+    <h2>Our Packages</h2>
+    <div class="cards">
+      <div class="pkg-card" onclick="selectService('Express Shine', 35)">
+        <h3>Express Shine</h3>
+        <p>Fast exterior wash for a brilliant glow.</p>
+        <div class="price">35 SAR</div>
+        <button>Select</button>
+      </div>
+      <div class="pkg-card" onclick="selectService('Showroom Ready', 60)">
+        <h3>Showroom Ready</h3>
+        <p>Comprehensive detailing for a flawless look.</p>
+        <div class="price">60 SAR</div>
+        <button>Select</button>
+      </div>
+      <div class="pkg-card" onclick="selectService('Master Detail', 120)">
+        <h3>Master Detail</h3>
+        <p>Top-to-bottom restoration and protection.</p>
+        <div class="price">120 SAR</div>
+        <button>Select</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="page-about" class="page hidden">
+    <div class="info-card">
+      <h2>About AutoGlow</h2>
+      <p>Your trusted online platform for professional car detailing services.</p>
+
+      <div class="mission-box">
+        "To make professional car care accessible to everyone — by letting customers book quality detailing services online, anytime, in just a few seconds."
+      </div>
+
+      <h3>Who We Are</h3>
+      <p>AutoGlow is a car wash booking platform built to solve a real problem: the hassle of scheduling car wash appointments. We connect car owners with professional detailing services through a simple, fast, and reliable online experience.</p>
+
+      <h3>The Problem We Solve</h3>
+      <p>Many customers struggle to book car wash appointments quickly and conveniently. Long calls, unclear pricing, and uncertain availability make the process frustrating. AutoGlow eliminates all of that.</p>
+
+      <h3>Our Solution</h3>
+      <p>Our website allows users to browse available services, choose a convenient time, and confirm a car wash booking in minutes — all from their device, without needing to call anyone.</p>
+
+      <h3>Our Packages</h3>
+      <p>
+        <strong>Express Shine (35 SAR)</strong> — A quick exterior wash for everyday freshness.<br>
+        <strong>Showroom Ready (60 SAR)</strong> — Full detailing for a flawless, like-new finish.<br>
+        <strong>Master Detail (120 SAR)</strong> — Deep cleaning and long-lasting protection, top to bottom.
+      </p>
+    </div>
+  </div>
+
+  <!-- HELP -->
+  <div id="page-help" class="page hidden">
+    <div class="info-card">
+      <h2>Help & Support</h2>
+      <p>Need assistance? We're here to help.</p>
+
+      <div class="help-section" style="margin-top:24px;">
+        <h3>How to Book</h3>
+        <p>Select a package from the home page → Create an account or log in → Choose your car type, date, and time → Review and confirm your booking.</p>
+      </div>
+
+      <div class="help-section">
+        <h3>Payment</h3>
+        <p>We accept Credit Card payments. All prices include 15% VAT.</p>
+      </div>
+
+      <div class="help-section">
+        <h3>Contact Us</h3>
+        <p>For any questions or issues, reach out to us directly on WhatsApp and we'll respond as soon as possible.</p>
+        <a class="whatsapp-btn" href="https://wa.me/966543774058" target="_blank">
+          💬 Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOGIN -->
+  <div id="page-login" class="page hidden">
+    <div class="form-card">
+      <h2>Welcome Back</h2>
+      <div id="loginError" class="error-msg hidden"></div>
+      <label>Mobile Number</label>
+      <input type="tel" id="loginMobile" placeholder="05xxxxxxxx" maxlength="10">
+      <label>Password</label>
+      <input type="password" id="loginPass" placeholder="Enter your password">
+      <div class="btn-row">
+        <button class="btn-back" onclick="showPage('home')">← Back</button>
+        <button class="btn-main" onclick="doLogin()">Log In</button>
+      </div>
+      <p class="switch">Don't have an account? <a onclick="showPage('signup')">Sign Up</a></p>
+    </div>
+  </div>
+
+  <!-- SIGNUP -->
+  <div id="page-signup" class="page hidden">
+    <div class="form-card">
+      <h2>Create Account</h2>
+      <div id="signupError" class="error-msg hidden"></div>
+      <label>Full Name</label>
+      <input type="text" id="signupName" placeholder="Enter your name">
+      <label>Mobile Number</label>
+      <input type="tel" id="signupMobile" placeholder="05xxxxxxxx" maxlength="10">
+      <label>Password</label>
+      <input type="password" id="signupPass" placeholder="Minimum 6 characters">
+      <label>Confirm Password</label>
+      <input type="password" id="signupConfirm" placeholder="Re-enter password">
+      <div class="btn-row">
+        <button class="btn-back" onclick="showPage('login')">← Back</button>
+        <button class="btn-main" onclick="doSignup()">Create Account</button>
+      </div>
+      <p class="switch">Already have an account? <a onclick="showPage('login')">Log In</a></p>
+    </div>
+  </div>
+
+  <!-- BOOKING -->
+  <div id="page-booking" class="page hidden">
+    <div class="form-card">
+      <h2>Booking Details</h2>
+      <div class="info-box">
+        <span>Service: <strong id="bookingService">-</strong></span>
+        <span>User: <strong id="bookingUser">-</strong></span>
+      </div>
+      <div id="bookingError" class="error-msg hidden"></div>
+      <label>Car Type</label>
+      <div class="radio-group">
+        <label class="radio-opt"><input type="radio" name="car" value="Sedan"> Sedan</label>
+        <label class="radio-opt"><input type="radio" name="car" value="SUV"> SUV</label>
+        <label class="radio-opt"><input type="radio" name="car" value="Pickup Truck"> Pickup Truck</label>
+      </div>
+      <label>Date</label>
+      <input type="date" id="bookDate">
+      <label>Time</label>
+      <div class="radio-group">
+        <label class="radio-opt"><input type="radio" name="time" value="8:00 AM"> 8:00 AM</label>
+        <label class="radio-opt"><input type="radio" name="time" value="10:00 AM"> 10:00 AM</label>
+        <label class="radio-opt"><input type="radio" name="time" value="12:00 PM"> 12:00 PM</label>
+        <label class="radio-opt"><input type="radio" name="time" value="2:00 PM"> 2:00 PM</label>
+        <label class="radio-opt"><input type="radio" name="time" value="4:00 PM"> 4:00 PM</label>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="showPage('login')">← Back</button>
+        <button class="btn-main" onclick="doBooking()">Continue →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT -->
+  <div id="page-checkout" class="page hidden">
+    <div class="form-card">
+      <h2>Checkout</h2>
+      <div class="summary" id="checkoutSummary"></div>
+      <h3 style="color:#405B88; font-size:16px; margin-top:16px;">💳 Credit Card Details</h3>
+      <div id="checkoutError" class="error-msg hidden"></div>
+      <label>Card Number</label>
+      <input type="tel" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+      <div class="card-row">
+        <div class="card-field">
+          <label>Expiry Date</label>
+          <input type="tel" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+        </div>
+        <div class="card-field">
+          <label>CVV</label>
+          <input type="tel" id="cardCVV" placeholder="123" maxlength="3">
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="showPage('booking')">← Back</button>
+        <button class="btn-main" onclick="doCheckout()">Confirm Booking →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIRMATION -->
+  <div id="page-confirmation" class="page hidden">
+    <div class="form-card">
+      <div class="success-icon">✓</div>
+      <h2 style="text-align:center; margin-bottom:8px;">Booking Confirmed!</h2>
+      <p class="ref-label">Reference: <strong id="confRef">-</strong></p>
+      <div class="summary" id="confSummary"></div>
+      <div class="btn-row">
+        <button class="btn-back" onclick="window.print()">🖨 Print</button>
+        <button class="btn-main" onclick="goHome()">Back to Home</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>&copy; 2026 AutoGlow</footer>
+
+  <script src="js/autoglow-logic.js"></script>
+</body>
+</html>
